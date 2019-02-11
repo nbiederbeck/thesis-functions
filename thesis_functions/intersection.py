@@ -49,4 +49,13 @@ def create_united_df(fact, magic):
     df["night_fact"] = fact.iloc[ind_f]["night"].values
     df["run_number_magic"] = magic.iloc[ind_m]["run_number"].values
     df["run_number_fact"] = fact.iloc[ind_f]["run_number"].values
+    # df["run_start_magic"] = magic.iloc[ind_m]["run_start"].values
+    # df["run_stop_magic"] = magic.iloc[ind_m]["run_stop"].values
+    # df["run_start_fact"] = fact.iloc[ind_f]["run_start"].values
+    # df["run_stop_fact"] = fact.iloc[ind_f]["run_stop"].values
+    start = np.maximum(fact.iloc[ind_f]["run_start"].values, magic.iloc[ind_m]["run_start"].values)
+    # df["start"] = start
+    stop = np.minimum(fact.iloc[ind_f]["run_stop"].values, magic.iloc[ind_m]["run_stop"].values)
+    # df["stop"] = stop
+    df["duration"] = stop - start
     return df

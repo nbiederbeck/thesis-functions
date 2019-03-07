@@ -3,6 +3,11 @@ from astropy.time import Time
 
 
 def magic_times_to_unixtime(times):
+    """
+    Parameters
+    ----------
+    times: time container opened with uproot: `file['Events']['MTime_1.']`
+    """
     # Get milliseconds (int), nanoseconds (int)
     ms = times[b"MTime_1.fTime.fMilliSec"].array()
     ns = times[b"MTime_1.fNanoSec"].array()
